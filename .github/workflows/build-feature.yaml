@@ -83,5 +83,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          event_type: publish-artifact-event
-          client_payload: '{ base_branch: "${{ github.base_ref }}" }'
+          event-type: publish-artifact-event
+          client-payload: '{ base_branch: "${{ github.base_ref }}" }'
