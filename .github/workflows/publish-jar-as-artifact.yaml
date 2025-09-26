@@ -6,7 +6,7 @@ jobs:
   dowlonad-artifact-job:
     runs-on: ubuntu-latest
     env:
-      ARTIFACT_NAME: 'ada_qartz-0.0.1-SNAPSHOT.jar'
+      ARTIFACT_NAME: 'customer-0.0.1-SNAPSHOT.jar'
     permissions:
       contents: write
       pull-requests: write
@@ -39,7 +39,7 @@ jobs:
           java-version: '17'
 
       - name: Cache local Maven repository
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -61,8 +61,8 @@ jobs:
       # 4- publish it as artifact
       ######################################################## 
       - name: Publish Package
-        if: success()
-        uses: actions/upload-artifact@v3
+        if: ${{ success()}}
+        uses: actions/upload-artifact@v4
         with:
          name: artifactjar
          path: ${{ github.workspace }}/target/${{ env.ARTIFACT_NAME }}   
